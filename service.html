@@ -70,16 +70,16 @@
     <!-- Navbar Start -->
     <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0">
         <a href="index.html" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
-            <h1 class="m-0">Gardener</h1>
+            <img style="height: 5rem;" src="img/Edenaura_png-01logo.png" alt="">
         </a>
         <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav ms-auto p-4 p-lg-0">
-                <a href="index.html" class="nav-item nav-link">Home</a>
+                <a href="index.html" class="nav-item nav-link active">Home</a>
                 <a href="about.html" class="nav-item nav-link">About</a>
-                <a href="service.html" class="nav-item nav-link active">Services</a>
+                <a href="service.html" class="nav-item nav-link">Services</a>
                 <a href="project.html" class="nav-item nav-link">Projects</a>
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
@@ -92,8 +92,17 @@
                     </div>
                 </div>
                 <a href="contact.html" class="nav-item nav-link">Contact</a>
+                <a href="#" class="nav-item nav-link" data-bs-toggle="modal" data-bs-target="#signInModal">Sign In</a>
+                <a href="#" class="nav-item nav-link" data-bs-toggle="modal" data-bs-target="#signUpModal">Sign Up</a>
+                <a href="#" class="nav-item nav-link position-relative" data-bs-toggle="modal" data-bs-target="#cartModal">
+                    <i class="fa fa-shopping-cart"></i> Cart
+                    <span id="cart-count" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                        0
+                    </span>
+                </a>
             </div>
-            <a href="" class="btn btn-primary py-4 px-lg-4 rounded-0 d-none d-lg-block">Get A Quote<i class="fa fa-arrow-right ms-3"></i></a>
+            <a href="" class="btn btn-primary py-4 px-lg-4 rounded-0 d-none d-lg-block">Get A Quote<i
+                    class="fa fa-arrow-right ms-3"></i></a>
         </div>
     </nav>
     <!-- Navbar End -->
