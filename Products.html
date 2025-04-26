@@ -80,20 +80,21 @@
                 <a href="index.html" class="nav-item nav-link active">Home</a>
                 <a href="about.html" class="nav-item nav-link">About</a>
                 <a href="service.html" class="nav-item nav-link">Services</a>
-                <a href="project.html" class="nav-item nav-link">Projects</a>
+                <a href="Products.html" class="nav-item nav-link">Products</a>
                 <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
+                    <!-- <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                     <div class="dropdown-menu bg-light m-0">
                         <a href="feature.html" class="dropdown-item">Features</a>
                         <a href="quote.html" class="dropdown-item">Free Quote</a>
                         <a href="team.html" class="dropdown-item">Our Team</a>
                         <a href="testimonial.html" class="dropdown-item">Testimonial</a>
                         <a href="404.html" class="dropdown-item">404 Page</a>
-                    </div>
+                    </div> -->
                 </div>
                 <a href="contact.html" class="nav-item nav-link">Contact</a>
-                <a href="#" class="nav-item nav-link" data-bs-toggle="modal" data-bs-target="#signInModal">Sign In</a>
-                <a href="#" class="nav-item nav-link" data-bs-toggle="modal" data-bs-target="#signUpModal">Sign Up</a>
+                <a href="#" class="nav-item nav-link" data-bs-toggle="modal" data-bs-target="#userAuthModal">
+                    <i class="fa fa-user"></i>
+                </a>
                 <a href="#" class="nav-item nav-link position-relative" data-bs-toggle="modal" data-bs-target="#cartModal">
                     <i class="fa fa-shopping-cart"></i> Cart
                     <span id="cart-count" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
@@ -111,12 +112,12 @@
     <!-- Page Header Start -->
     <div class="container-fluid page-header py-5 mb-5 wow fadeIn" data-wow-delay="0.1s">
         <div class="container text-center py-5">
-            <h1 class="display-3 text-white mb-4 animated slideInDown">Projects</h1>
+            <h1 class="display-3 text-white mb-4 animated slideInDown">Products</h1>
             <nav aria-label="breadcrumb animated slideInDown">
                 <ol class="breadcrumb justify-content-center mb-0">
                     <li class="breadcrumb-item"><a href="#">Home</a></li>
                     <li class="breadcrumb-item"><a href="#">Pages</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Projects</li>
+                    <li class="breadcrumb-item active" aria-current="page">Products</li>
                 </ol>
             </nav>
         </div>
@@ -125,7 +126,7 @@
 
 
     <!-- Projects Start -->
-    <div class="container-xxl py-5">
+    <!-- <div class="container-xxl py-5">
         <div class="container">
             <div class="text-center mx-auto wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
                 <p class="fs-5 fw-bold text-primary">Our Projects</p>
@@ -215,10 +216,199 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
     <!-- Projects End -->
 
 
+    <!-- Products Start -->
+    <section>
+        <style>
+            .product-card {
+                border: 1px solid #e0e0e0;
+                border-radius: 10px;
+                padding: 15px;
+                margin-bottom: 20px;
+                box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+            }
+
+            .product-img {
+                background-color: #f2f2f2;
+                height: 200px;
+                border-radius: 8px;
+                margin-bottom: 15px;
+            }
+
+            .btn-fav.active {
+                color: red;
+            }
+
+            .btn-fav {
+                background: none;
+                border: none;
+                font-size: 20px;
+                cursor: pointer;
+            }
+        </style>
+
+        <div class="container my-5">
+            <h2 class="mb-4 text-center">Our Products</h2>
+            <div class="row" id="productGrid">
+                <!-- Product cards will be inserted here -->
+            </div>
+        </div>
+
+        <script>
+            const products = [
+                { id: 1, name: 'Product A', price: '$29.99' },
+                { id: 2, name: 'Product B', price: '$39.99' },
+                { id: 3, name: 'Product C', price: '$24.99' },
+                { id: 4, name: 'Product D', price: '$49.99' },
+                { id: 5, name: 'Product E', price: '$19.99' },
+                { id: 6, name: 'Product F', price: '$59.99' },
+                { id: 7, name: 'Product G', price: '$34.99' },
+                { id: 8, name: 'Product H', price: '$44.99' },
+                { id: 9, name: 'Product I', price: '$29.99' },
+                { id: 10, name: 'Product J', price: '$39.99' },
+                { id: 11, name: 'Product K', price: '$24.99' },
+                { id: 12, name: 'Product L', price: '$49.99' },
+                { id: 13, name: 'Product M', price: '$19.99' },
+                { id: 14, name: 'Product N', price: '$59.99' },
+                { id: 15, name: 'Product O', price: '$34.99' },
+                { id: 16, name: 'Product P', price: '$44.99' }  
+            ];
+
+            const productGrid = document.getElementById('productGrid');
+
+            products.forEach(product => {
+                const col = document.createElement('div');
+                col.className = 'col-md-3';
+
+                col.innerHTML = `
+      <div class="product-card text-center">
+        <div class="product-img d-flex align-items-center justify-content-center">
+          <span>Image</span>
+        </div>
+        <h5 class="product-name">${product.name}</h5>
+        <p class="text-muted">${product.price}</p>
+        <div class="d-flex justify-content-between">
+          <button class="btn btn-success btn-sm w-75">Add to Cart</button>
+          <button class="btn-fav" title="Add to Favorites">♥</button>
+        </div>
+      </div>
+    `;
+
+                // Favorite toggle logic
+                const favBtn = col.querySelector('.btn-fav');
+                favBtn.addEventListener('click', () => {
+                    favBtn.classList.toggle('active');
+                });
+
+                productGrid.appendChild(col);
+            });
+        </script>
+    </section>
+    <!-- Products End -->
+  <!-- Cart Modal Start -->
+  <div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="cartModalLabel">Your Cart</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div id="cart-items" class="list-group">
+            <!-- Cart items will be dynamically added here -->
+          </div>
+          <div class="mt-3 text-end">
+            <strong>Total: </strong><span id="cart-total">$0.00</span>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" id="checkout-btn">Checkout</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Cart Modal End -->
+
+  <script>
+    // Cart data structure
+    const cart = [];
+
+    // Utility to parse price string like "$29.99" to number 29.99
+    function parsePrice(priceStr) {
+      return parseFloat(priceStr.replace(/[^0-9.-]+/g,""));
+    }
+
+    // Utility to format number to price string like "$29.99"
+    function formatPrice(num) {
+      return '$' + num.toFixed(2);
+    }
+
+    // Update cart count badge
+    function updateCartCount() {
+      const cartCount = document.getElementById('cart-count');
+      cartCount.textContent = cart.length;
+    }
+
+    // Update cart modal items and total
+    function updateCartModal() {
+      const cartItemsContainer = document.getElementById('cart-items');
+      cartItemsContainer.innerHTML = '';
+
+      let total = 0;
+      cart.forEach((item, index) => {
+        total += parsePrice(item.price);
+
+        const itemElem = document.createElement('div');
+        itemElem.className = 'list-group-item d-flex justify-content-between align-items-center';
+
+        itemElem.innerHTML = `
+          <div>
+            <h6 class="my-0">${item.name}</h6>
+            <small class="text-muted">${item.price}</small>
+          </div>
+          <button class="btn btn-danger btn-sm">Remove</button>
+        `;
+
+        // Remove button handler
+        itemElem.querySelector('button').addEventListener('click', () => {
+          cart.splice(index, 1);
+          updateCartCount();
+          updateCartModal();
+        });
+
+        cartItemsContainer.appendChild(itemElem);
+      });
+
+      document.getElementById('cart-total').textContent = formatPrice(total);
+    }
+
+    // Add event listeners to "Add to Cart" buttons
+    function setupAddToCartButtons() {
+      const productGrid = document.getElementById('productGrid');
+      productGrid.querySelectorAll('.btn-success').forEach((btn, index) => {
+        btn.addEventListener('click', () => {
+          const product = {
+            name: products[index].name,
+            price: products[index].price
+          };
+          cart.push(product);
+          updateCartCount();
+          updateCartModal();
+        });
+      });
+    }
+
+    // Initialize cart UI
+    document.addEventListener('DOMContentLoaded', () => {
+      updateCartCount();
+      setupAddToCartButtons();
+    });
+  </script>
+  
     <!-- Footer Start -->
     <div class="container-fluid bg-dark text-light footer mt-5 py-5 wow fadeIn" data-wow-delay="0.1s">
         <div class="container py-5">
